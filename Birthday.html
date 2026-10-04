@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Birthday Gift 🎁❤️</title>
+
+<style>
+
+/* ================================
+   BASIC PAGE
+================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: Georgia, "Times New Roman", serif;
+
+    background:
+        radial-gradient(circle at center,
+        #243b78 0%,
+        #111a3d 45%,
+        #050817 100%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+}
+
+
+/* ================================
+   FLOATING MUSIC TOGGLE BUTTON
+================================ */
+
+.music-toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.music-toggle-btn:hover {
+    transform: scale(1.1);
+    background: rgba(255, 79, 145, 0.3);
+    border-color: rgba(255, 79, 145, 0.6);
+}
+
+.music-toggle-btn.playing {
+    animation: pulseMusic 1.8s infinite ease-in-out;
+}
+
+@keyframes pulseMusic {
+    0%, 100% { box-shadow: 0 0 10px rgba(255, 79, 145, 0.4); }
+    50% { box-shadow: 0 0 25px rgba(255, 79, 145, 0.8); }
+}
+
+
+/* ================================
+   BACKGROUND GLOW
+================================ */
+
+.background-glow {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+
+    background: rgba(90, 140, 255, 0.12);
+
+    border-radius: 50%;
+
+    filter: blur(80px);
+
+    animation: backgroundGlow 5s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+@keyframes backgroundGlow {
+
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.25);
+        opacity: 0.8;
+    }
+}
+
+
+/* ================================
+   GIFT WRAPPER
+================================ */
+
+.gift-wrapper {
+
+    position: relative;
+
+    width: 320px;
+    height: 430px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    animation: floatingGift 3.5s ease-in-out infinite;
+
+    z-index: 5;
+}
+
+@keyframes floatingGift {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-22px);
+    }
+}
+
+
+/* ================================
+   SHADOW UNDER GIFT
+================================ */
+
+.gift-shadow {
+
+    position: absolute;
+
+    width: 210px;
+    height: 35px;
+
+    bottom: 5px;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    border-radius: 50%;
+
+    filter: blur(12px);
+
+    z-index: 1;
+
+    animation: shadowFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes shadowFloat {
+
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.55;
+    }
+
+    50% {
+        transform: scale(0.72);
+        opacity: 0.25;
+    }
+}
+
+
+/* ================================
+   GIFT BOX
+================================ */
+
+.gift {
+
+    position: absolute;
+
+    width: 280px;
+    height: 220px;
+
+    bottom: 35px;
+
+    z-index: 5;
+}
+
+
+/* ================================
+   MAIN BLUE BOX
+================================ */
+
+.box {
+
+    position: absolute;
+
+    width: 280px;
+    height: 190px;
+
+    bottom: 0;
+    left: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3184ff,
+            #1556c8 50%,
+            #0d3d96
+        );
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 18px 35px rgba(0,0,0,0.35),
+        inset 0 5px 10px rgba(255,255,255,0.15);
+
+    z-index: 5;
+
+    border: 2px solid rgba(255,255,255,0.08);
+}
+
+.box::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,0.18),
+            transparent 35%
+        );
+
+    border-radius: 8px;
+
+    pointer-events: none;
+}
+
+
+/* ================================
+   RIBBONS WITH UNWRAP ANIMATION
+================================ */
+
+.ribbon-vertical {
+
+    position: absolute;
+
+    width: 48px;
+    height: 100%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff4f91,
+            #ff9ac0,
+            #ff4f91
+        );
+
+    box-shadow:
+        inset 4px 0 5px rgba(255,255,255,0.25),
+        inset -4px 0 5px rgba(0,0,0,0.15);
+
+    z-index: 6;
+    transition: transform 0.8s ease, opacity 0.6s ease;
+}
+
+.ribbon-horizontal {
+
+    position: absolute;
+
+    width: 100%;
+    height: 45px;
+
+    top: 72px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ff4f91,
+            #ff9ac0,
+            #ff4f91
+        );
+
+    box-shadow:
+        inset 0 4px 5px rgba(255,255,255,0.25),
+        inset 0 -4px 5px rgba(0,0,0,0.15);
+
+    z-index: 7;
+    transition: transform 0.8s ease, opacity 0.6s ease;
+}
+
+/* Ribbons fade/fade out when opened */
+
+.gift.opened .ribbon-horizontal {
+    transform: scaleX(0);
+    opacity: 0;
+}
+
+.gift.opened .ribbon-vertical {
+    transform: translateX(-50%) scaleY(0);
+    opacity: 0;
+}
+
+
+/* ================================
+   GIFT LID
+================================ */
+
+.lid {
+
+    position: absolute;
+
+    width: 300px;
+    height: 55px;
+
+    left: -10px;
+    top: -42px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3e91ff,
+            #1760d6,
+            #1045a5
+        );
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 12px 20px rgba(0,0,0,0.3);
+
+    z-index: 12;
+
+    transform-origin: center bottom;
+
+    transition:
+        transform 1.5s cubic-bezier(.2,.8,.2,1),
+        opacity 1s ease;
+}
+
+.lid::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 48px;
+    height: 100%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff4f91,
+            #ff9ac0,
+            #ff4f91
+        );
+
+    box-shadow:
+        inset 3px 0 5px rgba(255,255,255,0.25),
+        inset -3px 0 5px rgba(0,0,0,0.15);
+}
+
+
+/* ================================
+   TINY HEART BUTTON
+================================ */
+
+.heart-button {
+
+    position: absolute;
+
+    width: 55px;
+    height: 55px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    z-index: 100;
+
+    font-size: 32px;
+
+    transition: transform 0.3s ease;
+}
+
+.heart-button:hover {
+
+    transform:
+        translate(-50%, -50%)
+        scale(1.15);
+}
+
+.heart-button:active {
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.9);
+}
+
+.heart-button span {
+
+    display: block;
+
+    animation: heartPulse 1.5s ease-in-out infinite;
+
+    filter:
+        drop-shadow(0 0 5px #ff4f91)
+        drop-shadow(0 0 12px #ff4f91);
+}
+
+@keyframes heartPulse {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+}
+
+
+/* ================================
+   OPEN GIFT STATE
+================================ */
+
+.gift.opened .lid {
+
+    transform:
+        translateY(-170px)
+        translateX(-20px)
+        rotate(-12deg);
+
+    opacity: 0.95;
+
+    z-index: 2;
+}
+
+
+/* ================================
+   LETTER
+================================ */
+
+.letter {
+
+    position: absolute;
+
+    width: 310px;
+
+    height: 0;
+
+    left: 50%;
+
+    bottom: 125px;
+
+    transform:
+        translateX(-50%)
+        translateY(80px)
+        scale(0.85);
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffdf4,
+            #fff7dc
+        );
+
+    color: #392d2d;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    z-index: 20;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.45);
+
+    transition:
+        height 1.5s ease,
+        transform 1.5s cubic-bezier(.2,.8,.2,1),
+        opacity 1s ease;
+}
+
+.gift.opened .letter {
+
+    height: 420px;
+
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        translateY( 50px)
+        scale(1);
+}
+
+.letter-content {
+
+    height: 100%;
+
+    padding: 30px 25px;
+
+    overflow-y: auto;
+
+    text-align: center;
+
+    scrollbar-width: thin;
+    scrollbar-color: #ff79a9 #ffe9f1;
+
+    pointer-events: auto;
+}
+
+.letter-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.letter-content::-webkit-scrollbar-track {
+    background: #ffe9f1;
+    border-radius: 10px;
+}
+
+.letter-content::-webkit-scrollbar-thumb {
+    background: #ff79a9;
+    border-radius: 10px;
+}
+
+.little-heart {
+
+    font-size: 30px;
+
+    margin-bottom: 10px;
+
+    animation:
+        littleHeartBeat 1.5s ease-in-out infinite;
+}
+
+@keyframes littleHeartBeat {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+.letter h1 {
+
+    color: #e83e79;
+
+    font-size: 28px;
+
+    line-height: 1.3;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 2px 4px rgba(0,0,0,0.12);
+}
+
+.letter p {
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    margin-bottom: 18px;
+}
+
+.signature {
+
+    margin-top: 30px;
+
+    font-size: 18px;
+
+    color: #e83e79;
+
+    font-weight: bold;
+
+    line-height: 1.7;
+}
+
+
+/* ================================
+   SPARKLES
+================================ */
+
+.sparkle {
+
+    position: fixed;
+
+    width: 5px;
+    height: 5px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 8px white,
+        0 0 15px #8ec5ff;
+
+    pointer-events: none;
+
+    animation:
+        sparkleAnimation
+        3s linear infinite;
+
+    opacity: 0;
+}
+
+@keyframes sparkleAnimation {
+
+    0% {
+        transform: translateY(30px) scale(0);
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-120px) scale(1.2);
+        opacity: 0;
+    }
+}
+
+
+/* ================================
+   BALLOONS
+================================ */
+
+.balloon {
+
+    position: fixed;
+
+    width: 40px;
+    height: 50px;
+
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    animation: floatUp 4s ease-out forwards;
+
+    z-index: 100;
+}
+
+.balloon::after {
+
+    content: '';
+
+    position: absolute;
+
+    width: 2px;
+    height: 40px;
+
+    background: rgba(255, 255, 255, 0.5);
+
+    top: 100%;
+    left: 50%;
+
+    transform: translateX(-50%);
+}
+
+@keyframes floatUp {
+
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-100vh)
+            scale(1.2)
+            translateX(calc(100px * var(--balloon-random-x)));
+
+        opacity: 0;
+    }
+}
+
+
+/* ================================
+   CONFETTI BURST
+================================ */
+
+.confetti {
+
+    position: fixed;
+
+    width: var(--size, 10px);
+    height: var(--size, 10px);
+
+    background-color: var(--color, #ff4f91);
+
+    border-radius: var(--radius, 2px);
+
+    pointer-events: none;
+
+    z-index: 90;
+
+    opacity: 1;
+
+    animation: confettiBurst var(--duration, 2.5s) cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes confettiBurst {
+
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(0.3);
+        opacity: 0;
+    }
+}
+
+
+/* ================================
+   FLOATING AMBIENT HEARTS
+================================ */
+
+.floating-bg-heart {
+    position: fixed;
+    bottom: -30px;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.6;
+    animation: floatUpBackground linear forwards;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
+}
+
+@keyframes floatUpBackground {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-105vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+/* ================================
+   INSTRUCTION
+================================ */
+
+.instruction {
+
+    position: fixed;
+
+    bottom: 35px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 15px;
+
+    letter-spacing: 1px;
+
+    color: rgba(255,255,255,0.8);
+
+    text-align: center;
+
+    animation:
+        instructionPulse 2s ease-in-out infinite;
+
+    z-index: 50;
+}
+
+@keyframes instructionPulse {
+
+    0%, 100% {
+        opacity: 0.55;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+/* ================================
+   MOBILE RESPONSIVENESS
+================================ */
+
+@media (max-width: 600px) {
+
+    .gift-wrapper {
+
+        transform: scale(0.82);
+
+        animation:
+            floatingGiftMobile
+            3.5s ease-in-out infinite;
+    }
+
+    @keyframes floatingGiftMobile {
+
+        0%, 100% {
+            transform:
+                scale(0.82)
+                translateY(0);
+        }
+
+        50% {
+            transform:
+                scale(0.82)
+                translateY(-18px);
+        }
+    }
+
+    .letter {
+
+        width: 290px;
+    }
+
+    .gift.opened .letter {
+
+        height: 390px;
+    }
+
+    .letter h1 {
+
+        font-size: 25px;
+    }
+
+    .letter p {
+
+        font-size: 15px;
+    }
+
+    .instruction {
+
+        bottom: 20px;
+
+        font-size: 13px;
+
+        width: 90%;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- Floating Music Toggle -->
+<button id="musicToggle" class="music-toggle-btn" aria-label="Toggle Music">
+    <span id="musicIcon">🎵</span>
+</button>
+
+<!-- Background glow -->
+<div class="background-glow"></div>
+
+
+<!-- ================================
+     GIFT WRAPPER
+================================ -->
+
+<div class="gift-wrapper">
+
+    <!-- Shadow -->
+    <div class="gift-shadow"></div>
+
+
+    <!-- Gift -->
+    <div class="gift" id="gift">
+
+
+        <!-- =========================
+             LETTER
+        ========================== -->
+
+        <div class="letter">
+
+            <div class="letter-content">
+
+                <div class="little-heart">
+                    💗
+                </div>
+
+
+                <h1>
+                    Happy Birthday,
+                    My Prettiest Dream Girl!💝
+                </h1>
+
+
+                <p>
+                    To my dearest Kissy Jie,
+                </p>
+
+
+                <p>
+                    Happy Happy Birthday po sayo baby! ❤️
+                </p>
+
+
+                <p>
+                    Today is a very special day, because
+                    it is the day the most beautiful person
+                    in my life was born.
+                </p>
+
+                <h2>
+                    20TH BIRTHDAY OF YOUR LIFE Baby
+                    🥳🎂
+                </h2>
+                <p>
+
+                </p>
+                <p>
+                    I want you to know how thankful I am
+                    for every moment we have shared together.
+                    Every smile, every conversation, and
+                    every memory with you means so much to me.
+                </p>
+
+                
+                <p>
+                    Nawa ay marami pang taon na darating sayo nang
+                    magkasama tayo baby.
+                </p>
+
+
+                <p> 
+                    Sana baby, for your new Age year ay hindi mo na
+                    Pababayaan ang sarili mo. Kumain ka sa tamang oras,
+                    At alagaan ang sarili habang hinihintay nating dalawa
+                    ang araw na magsama na tayo para ako na mismo mag
+                    aalaga sayo.
+                </p>
+
+
+                <p>
+                    I hope this birthday brings you happiness,
+                    peace, beautiful memories, and everything
+                    your heart wishes for.
+                </p>
+
+
+                <p>
+                    No matter how many birthdays come and go to you baby,
+                    I will continue to be there beside you,
+                    celebrating every beautiful chapter
+                    of your life.
+                </p>
+
+
+                <p>
+                    Thank you for being someone so special
+                    to me. You are more precious to me than
+                    words can completely explain.
+                </p>
+
+                <p>
+                    No word can define and express how much I love you baby.
+                </p>
+
+                <p>
+                    Enjoy your special day, baby.
+                    Eat lots of good food, smile a lot,
+                    and let yourself be spoiled today, tomorrow, and forever.
+                    Happy, happy birthday again, my beloved Kissy Jie!
+                </p>
+
+
+                <div class="signature">
+
+                    Forever yours,<br>
+
+                    ❤️Marell Jay❤️
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             GIFT BOX
+        ========================== -->
+
+        <div class="box">
+
+            <!-- Horizontal ribbon -->
+            <div class="ribbon-horizontal"></div>
+
+            <!-- Vertical ribbon -->
+            <div class="ribbon-vertical"></div>
+
+
+            <!-- Tiny heart -->
+            <button
+                class="heart-button"
+                id="heartButton"
+                aria-label="Open birthday gift">
+
+                <span>❤️</span>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =========================
+             GIFT LID
+        ========================== -->
+
+        <div class="lid"></div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================
+     INSTRUCTION
+================================ -->
+
+<div class="instruction" id="instruction">
+
+    Click the little heart ❤️
+
+</div>
+
+
+
+<!-- ================================
+     SPARKLES
+================================ -->
+
+<div class="sparkle" style="left:10%; top:70%; animation-delay:0s;"></div>
+
+<div class="sparkle" style="left:20%; top:40%; animation-delay:1s;"></div>
+
+<div class="sparkle" style="left:80%; top:60%; animation-delay:1.5s;"></div>
+
+<div class="sparkle" style="left:90%; top:30%; animation-delay:2s;"></div>
+
+<div class="sparkle" style="left:70%; top:80%; animation-delay:0.5s;"></div>
+
+<div class="sparkle" style="left:35%; top:20%; animation-delay:2.5s;"></div>
+
+
+
+<!-- ================================
+     AUDIO PLAYER
+================================ -->
+
+<audio id="Music.mp3" loop preload="auto">
+
+    <source
+        src="Music.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+
+<script>
+
+/* ================================
+   ELEMENT REFERENCES
+================================ */
+
+const gift = document.getElementById("gift");
+
+const heartButton =
+    document.getElementById("heartButton");
+
+const instruction =
+    document.getElementById("instruction");
+
+const music =
+    document.getElementById("birthdayMusic");
+
+const musicToggle =
+    document.getElementById("musicToggle");
+
+const musicIcon =
+    document.getElementById("musicIcon");
+
+
+/* ================================
+   CLICK TINY HEART (OPEN & PLAY)
+================================ */
+
+heartButton.addEventListener("click", function () {
+
+    const isOpened = gift.classList.toggle("opened");
+
+
+    if (isOpened) {
+
+        instruction.textContent =
+            "A little message from my heart ❤️";
+
+
+        /* PLAY MUSIC IMMEDIATELY ON HEART CLICK */
+
+        if (music) {
+
+            music.currentTime = 0;
+
+            music.play().then(() => {
+
+                musicIcon.textContent = "🔊";
+
+                musicToggle.classList.add("playing");
+
+            }).catch(function (err) {
+
+                console.log("Audio play error:", err);
+
+            });
+
+        }
+
+
+        /* TRIGGER ALL VISUAL EFFECTS */
+
+        createSparkles();
+
+        createBalloons();
+
+        createConfetti();
+
+    } else {
+
+        instruction.textContent =
+            "Click the little heart ❤️";
+
+
+        /* PAUSE MUSIC WHEN GIFT IS CLOSED */
+
+        if (music) {
+
+            music.pause();
+
+            music.currentTime = 0;
+
+            musicIcon.textContent = "🎵";
+
+            musicToggle.classList.remove("playing");
+
+        }
+
+    }
+
+});
+
+
+
+/* ================================
+   FLOATING BUTTON MUSIC CONTROLLER
+================================ */
+
+musicToggle.addEventListener("click", function () {
+
+    if (music.paused) {
+
+        music.play();
+
+        musicIcon.textContent = "🔊";
+
+        musicToggle.classList.add("playing");
+
+    } else {
+
+        music.pause();
+
+        musicIcon.textContent = "🔇";
+
+        musicToggle.classList.remove("playing");
+
+    }
+
+});
+
+
+
+/* ================================
+   AMBIENT BACKGROUND HEARTS
+================================ */
+
+function createFloatingHearts() {
+
+    const heartSymbols = ["💖", "✨", "🌸", "💕", "⭐"];
+
+    setInterval(() => {
+
+        const heart = document.createElement("div");
+
+        heart.className = "floating-bg-heart";
+
+        heart.textContent =
+            heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+
+        heart.style.left = Math.random() * 100 + "vw";
+
+        heart.style.animationDuration = (Math.random() * 4 + 4) + "s";
+
+        heart.style.fontSize = (Math.random() * 12 + 12) + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 8000);
+
+    }, 450);
+
+}
+
+createFloatingHearts();
+
+
+
+/* ================================
+   SPARKLES
+================================ */
+
+function createSparkles() {
+
+    for (let i = 0; i < 25; i++) {
+
+        const sparkle =
+            document.createElement("div");
+
+        sparkle.className = "sparkle";
+
+        sparkle.style.left =
+            Math.random() * 100 + "%";
+
+        sparkle.style.top =
+            (30 + Math.random() * 60) + "%";
+
+        sparkle.style.animationDelay =
+            Math.random() * 2 + "s";
+
+        document.body.appendChild(sparkle);
+
+        setTimeout(() => {
+
+            sparkle.remove();
+
+        }, 3000);
+
+    }
+
+}
+
+
+
+/* ================================
+   BALLOONS
+================================ */
+
+function createBalloons() {
+
+    const colors = [
+        "#ff79a9",
+        "#ffe9f1",
+        "#FFD700",
+        "#FF6347",
+        "#87CEEB"
+    ];
+
+    for (let i = 0; i < 30; i++) {
+
+        const balloon =
+            document.createElement("div");
+
+        balloon.className = "balloon";
+
+        balloon.style.backgroundColor =
+            colors[Math.floor(Math.random() * colors.length)];
+
+        balloon.style.left =
+            (20 + Math.random() * 60) + "%";
+
+        balloon.style.setProperty(
+            '--balloon-random-x',
+            Math.random() * 2 - 1
+        );
+
+        balloon.style.animationDelay =
+            (Math.random() * 0.5) + "s";
+
+        document.body.appendChild(balloon);
+
+        setTimeout(() => {
+
+            balloon.remove();
+
+        }, 4500);
+
+    }
+
+}
+
+
+
+/* ================================
+   CONFETTI BURST
+================================ */
+
+function createConfetti() {
+
+    const colors = [
+        "#ff4f91",
+        "#ff9ac0",
+        "#ffd700",
+        "#00d2ff",
+        "#ffffff",
+        "#ff6b6b",
+        "#9b59b6"
+    ];
+
+    const giftRect = gift.getBoundingClientRect();
+
+    const startX = giftRect.left + giftRect.width / 2;
+
+    const startY = giftRect.top + 80;
+
+
+    for (let i = 0; i < 60; i++) {
+
+        const confetti = document.createElement("div");
+
+        confetti.className = "confetti";
+
+
+        const color = colors[Math.floor(Math.random() * colors.length)];
+
+        const size = Math.random() * 8 + 6 + "px";
+
+        const radius = Math.random() > 0.5 ? "50%" : "2px";
+
+
+        const angle = Math.random() * Math.PI * 2;
+
+        const distance = Math.random() * 300 + 150;
+
+        const tx = Math.cos(angle) * distance + "px";
+
+        const ty = (Math.sin(angle) * distance - 100) + "px";
+
+        const rot = (Math.random() * 720 - 360) + "deg";
+
+        const duration = (Math.random() * 1.5 + 1.5) + "s";
+
+
+        confetti.style.left = startX + "px";
+
+        confetti.style.top = startY + "px";
+
+        confetti.style.setProperty("--color", color);
+
+        confetti.style.setProperty("--size", size);
+
+        confetti.style.setProperty("--radius", radius);
+
+        confetti.style.setProperty("--tx", tx);
+
+        confetti.style.setProperty("--ty", ty);
+
+        confetti.style.setProperty("--rot", rot);
+
+        confetti.style.setProperty("--duration", duration);
+
+
+        document.body.appendChild(confetti);
+
+
+        setTimeout(() => {
+
+            confetti.remove();
+
+        }, 3000);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
